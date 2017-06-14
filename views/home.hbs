@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <title>API App</title>
+    <script src="/axios/axios.js"></script>
+  </head>
+  <body>
+    <h1>API App: Los Angeles</h1>
+    <h2 id="temp"></h2>
+    <script>
+      axios.get('/api')
+       .then(function (response) {
+         console.log(response.data);
+         var t = document.getElementById('temp');
+         t.innerHTML = response.data.currently.temperature;
+       });
+    </script>
+  </body>
+</html>
