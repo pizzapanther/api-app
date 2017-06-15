@@ -14,9 +14,10 @@ app.get('/', function (request, response) {
   response.render('home.hbs', {});
 });
 
+var DARK = process.env.DARKSKY_KEY;
 app.get('/api', cache('5 minutes'), function (request, response, next) {
   console.log('Generating new response');
-  axios.get('https://api.darksky.net/forecast/57728882c65019e9db6121fefac75a8c/37.8267,-122.4233').then(function (r) {
+  axios.get(`https://api.darksky.net/forecast/${DARK}/37.8267,-122.4233`).then(function (r) {
       response.json(r.data);
   })
   .catch(next);
