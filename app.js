@@ -4,6 +4,8 @@ var apicache = require('apicache');
 var cache = apicache.middleware;
 
 var axios = require('axios');
+var pgp = require('pg-promise')();
+var db = pgp(process.env.DATABASE_URL || {database: 'test'});
 
 app.set('view engine', 'hbs');
 
